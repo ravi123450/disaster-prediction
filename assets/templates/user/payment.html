@@ -1,0 +1,629 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Disaster Prediction</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:slnt,wght@-10..0,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'user/lib/animate/animate.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'user/lib/lightbox/css/lightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'user/lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'user/css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'user/css/style.css' %}">
+    
+    <style>
+        #wrapper {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .wrapper {
+            padding: 0 20px;
+        }
+        .wrapper-content {
+            padding: 20px 10px 40px;
+        }
+        #page-wrapper {
+            padding: 0 15px;
+            min-height: 568px;
+            position: relative !important;
+        }
+        @media (min-width: 768px) {
+            #page-wrapper {
+                position: inherit;
+                margin: 0 0 0 240px;
+                min-height: 2002px;
+            }
+        }
+        
+        /* Payments */
+        .payment-card {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #e7eaec;
+        }
+        .payment-icon-big {
+            font-size: 60px;
+            color: #d1dade;
+        }
+        .payments-method.panel-group .panel + .panel {
+            margin-top: -1px;
+        }
+        .payments-method .panel-heading {
+            padding: 15px;
+        }
+        .payments-method .panel {
+            border-radius: 0;
+        }
+        .payments-method .panel-heading h5 {
+            margin-bottom: 5px;
+        }
+        .payments-method .panel-heading i {
+            font-size: 26px;
+        }
+        
+        .payment-icon-big {
+            font-size: 60px !important;
+            color: #d1dade;
+        }
+        
+        .form-control,
+        .single-line {
+            background-color: #FFFFFF;
+            background-image: none;
+            border: 1px solid black;
+            border-radius: 1px;
+            color: inherit;
+            display: block;
+            padding: 6px 12px;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+            width: 100%;
+            font-size: 14px;
+        }
+        .text-navy {
+            color: #1ab394;
+        }
+        .text-success {
+            color: #1c84c6;
+        }
+        .text-warning {
+            color: #f8ac59;
+        }
+        .ibox {
+            clear: both;
+            margin-bottom: 25px;
+            margin-top: 0;
+            padding: 0;
+        }
+        .ibox.collapsed .ibox-content {
+            display: none;
+        }
+        .ibox.collapsed .fa.fa-chevron-up:before {
+            content: "\f078";
+        }
+        .ibox.collapsed .fa.fa-chevron-down:before {
+            content: "\f077";
+        }
+        .ibox:after,
+        .ibox:before {
+            display: table;
+        }
+        .ibox-title {
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            background-color: #ffffff;
+            border-color: #e7eaec;
+            border-image: none;
+            border-style: solid solid none;
+            border-width: 3px 0 0;
+            color: inherit;
+            margin-bottom: 0;
+            padding: 14px 15px 7px;
+            min-height: 48px;
+        }
+        .ibox-content {
+            background-color: #ffffff;
+            color: inherit;
+            padding: 15px 20px 20px 20px;
+            border-color: #e7eaec;
+            border-image: none;
+            border-style: solid solid none;
+            border-width: 1px 0;
+        }
+        .ibox-footer {
+            color: inherit;
+            border-top: 1px solid #e7eaec;
+            font-size: 90%;
+            background: #ffffff;
+            padding: 10px 15px;
+        }
+        .text-danger {
+            color: #ed5565;
+        }
+        
+        
+        .credit-card-div  span {
+            padding-top:10px;
+        }
+        .credit-card-div img {
+            padding-top:30px;
+        }
+        .credit-card-div .small-font {
+            font-size:9px;
+        }
+        .credit-card-div .pad-adjust {
+            padding-top:10px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    
+    <div class="container-fluid topbar px-0 px-lg-4 bg-light py-2 d-none d-lg-block">
+        <div class="container">
+            <div class="row gx-0 align-items-center">
+                <div class="col-lg-8 text-center text-lg-start mb-lg-0">
+                    <div class="d-flex flex-wrap">
+                        <div class="border-end border-primary pe-3">
+                            <a href="#" class="text-muted small"><i class="fas fa-map-marker-alt text-primary me-2"></i>Lb nagar</a>
+                        </div>
+                        <div class="ps-3">
+                            <a href="mailto:example@gmail.com" class="text-muted small"><i class="fas fa-envelope text-primary me-2"></i>info@codeleaf.in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <div class="d-flex justify-content-end">
+                        <div class="d-flex border-end border-primary pe-3">
+                            <a class="btn p-0 text-primary me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn p-0 text-primary me-3" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn p-0 text-primary me-3" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn p-0 text-primary me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fas fa-globe-europe text-primary me-2"></i> English</small></a>
+                            <div class="dropdown-menu rounded">
+                                <a href="#" class="dropdown-item">English</a>
+                                <a href="#" class="dropdown-item">Bangla</a>
+                                <a href="#" class="dropdown-item">French</a>
+                                <a href="#" class="dropdown-item">Spanish</a>
+                                <a href="#" class="dropdown-item">Arabic</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light"> 
+                <a href="#" class="navbar-brand p-0">
+                    <h1 class="text-primary mb-0"><i class="fas fa-exclamation-triangle me-2"></i> Disaster Prediction</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse  navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav  mx-0 mx-lg-auto ">
+                        <a href="{% url 'user_dashboard' %}" class="nav-item nav-link">Dashboard</a>
+                        <a href="{% url 'view_and_pay' %}" class="nav-item nav-link active">View and Pay Fines</a>
+                        {% comment %} <a href="{% url 'user_login' %}" class="nav-item nav-link">User</a> {% endcomment %}
+                        {% comment %} <a href="{% url 'admin_login' %}" class="nav-item nav-link">Admin</a> {% endcomment %}
+                        <a href="{% url 'user_profile' %}" class="nav-item nav-link">My Profile</a>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url 'user_logout' %}" class="btn btn-danger rounded-pill py-2 px-4 ms-3 flex-shrink-0">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center bg-primary">
+                    <div class="input-group w-75 mx-auto d-flex">
+                        <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                        <span id="search-icon-1" class="btn bg-light border nput-group-text p-3"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <div class="container-fluid feature bg-light pb-5">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                {% comment %} <div class="row">
+                    <div class="col-md-4">
+                        <div class="payment-card">
+                            <i class="fa fa-cc-visa payment-icon-big text-success"></i>
+                            <h2>
+                                **** **** **** 1060
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <small>
+                                        <strong>Expiry date:</strong> 10/16
+                                    </small>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <small>
+                                        <strong>Name:</strong> David
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="payment-card">
+                            <i class="fa fa-cc-mastercard payment-icon-big text-warning"></i>
+                            <h2>
+                                **** **** **** 7002
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <small>
+                                        <strong>Expiry date:</strong> 10/16
+                                    </small>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <small>
+                                        <strong>Name:</strong> Anna Smith
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="payment-card">
+                            <i class="fa fa-cc-discover payment-icon-big text-danger"></i>
+                            <h2>
+                                **** **** **** 3466
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <small>
+                                        <strong>Expiry date:</strong> 10/16
+                                    </small>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <small>
+                                        <strong>Name:</strong> Morgan
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> {% endcomment %}
+                <div class="row">
+                    
+                    <div class="col-lg-12">
+                        
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                Payment method
+                            </div>
+                            <div class="ibox-content">
+                                
+                                <div class="panel-group payments-method" id="accordion">
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="pull-right">
+                                                <i class="fa fa-cc-amex text-success"></i>
+                                                <i class="fa fa-cc-mastercard text-warning"></i>
+                                                <i class="fa fa-cc-discover text-danger"></i>
+                                            </div>
+                                            <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Credit Card</a>
+                                            </h5>
+                                        </div>
+                                        <div class="row" >
+                                            <div class="col-md-6">
+                                                
+                                                <div class="summary-details mb-3">
+                                                    <img src="{{details.fine_image.url}}" class="img-fluid" style="width: 100px;">
+                                                </div>
+                                                <div class="summary-header">
+                                                    <h2>Payment Summary</h2>
+                                                </div>
+                                                <div class="summary-details">
+                                                    <p><strong>Offense:</strong> Smoking in Public Places</p>
+                                                    <p><strong>Fine Amount:</strong> <span class="text-navy">₹{{ details.fine_amount }}</span></p>
+                                                    <p><strong>Issued Date and Time:</strong> <span class="text-navy">{{ details.issued_at }}</span></p>
+                                                </div>
+                                                <div class="summary-text">
+                                                    <p>
+                                                        This fine has been issued for the violation of public smoking regulations. Please ensure timely payment to avoid additional penalties.
+                                                    </p>
+                                                    <p>
+                                                        Failure to comply with the payment instructions may result in further legal action. For any queries or assistance, contact our support team.
+                                                    </p>
+                                                </div>                                            </div>
+                                                <div class="col-md-6 mx-auto px-5" style="border-radius: 20px; box-shadow: 4px 5px 10px grey;">
+                                                    <div class="credit-card-div">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <form method="post" action="{% url 'final_payment' %}">
+                                                                    {% csrf_token %}
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12 mb-4">
+                                                                            <h5 class="text-muted"> Credit Card Number</h5>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <input type="text" class="form-control" placeholder="0000" required>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <input type="text" class="form-control" placeholder="0000" required>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <input type="text" class="form-control" placeholder="0000" required>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <input type="text" class="form-control" placeholder="0000" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row ">
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <span class="help-block text-muted small-font"> Expiry Month</span>
+                                                                            <input type="text" class="form-control" placeholder="MM" required />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <span class="help-block text-muted small-font">  Expiry Year</span>
+                                                                            <input type="text" class="form-control" placeholder="YY" required />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <span class="help-block text-muted small-font">  CCV</span>
+                                                                            <input type="text" class="form-control" placeholder="CCV" required />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                            <img src="data:image/png;base64,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" class="img-rounded" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row ">
+                                                                        <div class="col-md-12 pad-adjust">
+                                                                            
+                                                                            <input type="text" class="form-control" placeholder="Name On The Card" required />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 pad-adjust">
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <!-- <input type="checkbox" checked class="text-muted"> Save details for fast payments. <a href="#">Learn More</a> -->
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <input type="hidden" name="fine_record_id" value="{{ details.pk }}" />
+                                                                    <div class="row text-center">
+                                                                        <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                                                                            <input type="reset" class="btn btn-danger" value="CANCEL" />
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                                                                            <button type="submit" class="btn btn-warning btn-block">PAY NOW</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-9">
+                        <div class="mb-5">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="footer-item">
+                                        <a href="{% url 'index' %}" class="p-0">
+                                            <h3 class="text-white"><i class="fas fa-smoking me-3"></i> Disaster Prediction</h3>
+                                            
+                                        </a>
+                                        <p class="text-white mb-4">Our system is built on reliable and secure technology to ensure accurate detection and identification.</p>
+                                        <div class="footer-btn d-flex">
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-3" href="#"><i class="fab fa-instagram"></i></a>
+                                            <a class="btn btn-md-square rounded-circle me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="footer-item">
+                                        <h4 class="text-white mb-4">Useful Links</h4>
+                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Dashboard</a>
+                                        <a href="#"><i class="fas fa-angle-right me-2"></i> Fines</a>
+                                        <a href="#"><i class="fas fa-angle-right me-2"></i> My Profile</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="pt-5" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                            <div class="row g-0">
+                                <div class="col-12">
+                                    <div class="row g-4">
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Address</h4>
+                                                    <p class="mb-0">Lb nagar , hyderabad</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fas fa-envelope fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Mail Us</h4>
+                                                    <p class="mb-0">info@codeleaf.in</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-4">
+                                            <div class="d-flex">
+                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
+                                                    <i class="fa fa-phone-alt fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-white">Telephone</h4>
+                                                    <p class="mb-0">99593 82287</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Newsletter</h4>
+                            <p class="text-white mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="position-relative rounded-pill mb-4">
+                                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                            <div class="d-flex flex-shrink-0">
+                                <div class="footer-btn">
+                                    <a href="#" class="btn btn-lg-square rounded-circle position-relative wow tada" data-wow-delay=".9s">
+                                        <i class="fa fa-phone-alt fa-2x"></i>
+                                        <div class="position-absolute" style="top: 2px; right: 12px;">
+                                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column ms-3 flex-shrink-0">
+                                    <span>Call to Our Experts</span>
+                                    <a href="tel:+ 0123 456 7890"><span class="text-white">99593 82287</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Disaster Prediction</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-start text-body">
+                        
+                        Designed By <a class="border-bottom text-white" href="https://codeleaf.in"></a> Distributed By <a class="border-bottom text-white" href="https://codeleaf.in" target="_blank"> Team codeleaf</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'user/lib/wow/wow.min.js' %}"></script>
+        <script src="{% static 'user/lib/easing/easing.min.js' %}"></script>
+        <script src="{% static 'user/lib/waypoints/waypoints.min.js' %}"></script>
+        <script src="{% static 'user/lib/counterup/counterup.min.js' %}"></script>
+        <script src="{% static 'user/lib/lightbox/js/lightbox.min.js' %}"></script>
+        <script src="{% static 'user/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+        
+        <script src="{% static 'user/js/main.js' %}"></script>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>
+        swal({
+            title: "Warning!",
+            text: "{{ message }}",
+            icon: "warning",
+            button: "OK",
+        });
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>
+        swal({
+            title: "Info :)",
+            text: "{{ message }}",
+            icon: "info",
+            button: "OK",
+        });
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <script>
+        swal({
+            title: "Error :)",
+            text: "{{ message }}",
+            icon: "error",
+            button: "OK",
+        });
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <script>
+        swal({
+            title: "Success :)",
+            text: "{{ message }}",
+            icon: "success",
+            button: "OK",
+        });
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    </html>

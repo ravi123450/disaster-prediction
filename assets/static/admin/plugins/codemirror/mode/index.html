@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+
+<title>CodeMirror: Language Modes</title>
+<meta charset="utf-8"/>
+<link rel=stylesheet href="../doc/docs.css">
+
+<div id=nav>
+  <a href="http://codemirror.net"><h1>CodeMirror</h1><img id=logo src="../doc/logo.png"></a>
+
+  <ul>
+    <li><a href="../admin/index.html">Home</a>
+    <li><a href="../doc/manual.html">Manual</a>
+    <li><a href="https://github.com/codemirror/codemirror">Code</a>
+  </ul>
+  <ul>
+    <li><a class=active href="#">Language modes</a>
+  </ul>
+</div>
+
+<article>
+
+  <h2>Language modes</h2>
+
+  <p>This is a list of every mode in the distribution. Each mode lives
+in a subdirectory of the <code>mode/</code> directory, and typically
+defines a single JavaScript file that implements the mode. Loading
+such file will make the language available to CodeMirror, through
+the <a href="../doc/manual.html#option_mode"><code>mode</code></a>
+option.</p>
+
+  <div style="-webkit-columns: 100px 2; -moz-columns: 100px 2; columns: 100px 2;">
+    <ul style="margin-top: 0">
+      <li><a href="apl/admin/index.html">APL</a></li>
+      <li><a href="asn.1/admin/index.html">ASN.1</a></li>
+      <li><a href="asterisk/admin/index.html">Asterisk dialplan</a></li>
+      <li><a href="brainfuck/admin/index.html">Brainfuck</a></li>
+      <li><a href="clike/admin/index.html">C, C++, C#</a></li>
+      <li><a href="clike/admin/index.html">Ceylon</a></li>
+      <li><a href="clojure/admin/index.html">Clojure</a></li>
+      <li><a href="css/gss.html">Closure Stylesheets (GSS)</a></li>
+      <li><a href="cmake/admin/index.html">CMake</a></li>
+      <li><a href="cobol/admin/index.html">COBOL</a></li>
+      <li><a href="coffeescript/admin/index.html">CoffeeScript</a></li>
+      <li><a href="commonlisp/admin/index.html">Common Lisp</a></li>
+      <li><a href="crystal/admin/index.html">Crystal</a></li>
+      <li><a href="css/admin/index.html">CSS</a></li>
+      <li><a href="cypher/admin/index.html">Cypher</a></li>
+      <li><a href="python/admin/index.html">Cython</a></li>
+      <li><a href="d/admin/index.html">D</a></li>
+      <li><a href="dart/admin/index.html">Dart</a></li>
+      <li><a href="django/admin/index.html">Django</a> (templating language)</li>
+      <li><a href="dockerfile/admin/index.html">Dockerfile</a></li>
+      <li><a href="diff/admin/index.html">diff</a></li>
+      <li><a href="dtd/admin/index.html">DTD</a></li>
+      <li><a href="dylan/admin/index.html">Dylan</a></li>
+      <li><a href="ebnf/admin/index.html">EBNF</a></li>
+      <li><a href="ecl/admin/index.html">ECL</a></li>
+      <li><a href="eiffel/admin/index.html">Eiffel</a></li>
+      <li><a href="https://github.com/optick/codemirror-mode-elixir">Elixir</a></li>
+      <li><a href="elm/admin/index.html">Elm</a></li>
+      <li><a href="erlang/admin/index.html">Erlang</a></li>
+      <li><a href="factor/admin/index.html">Factor</a></li>
+      <li><a href="fcl/admin/index.html">FCL</a></li>
+      <li><a href="forth/admin/index.html">Forth</a></li>
+      <li><a href="fortran/admin/index.html">Fortran</a></li>
+      <li><a href="mllike/admin/index.html">F#</a></li>
+      <li><a href="gas/admin/index.html">Gas</a> (AT&amp;T-style assembly)</li>
+      <li><a href="gherkin/admin/index.html">Gherkin</a></li>
+      <li><a href="go/admin/index.html">Go</a></li>
+      <li><a href="groovy/admin/index.html">Groovy</a></li>
+      <li><a href="haml/admin/index.html">HAML</a></li>
+      <li><a href="handlebars/admin/index.html">Handlebars</a></li>
+      <li><a href="haskell/admin/index.html">Haskell</a> (<a href="haskell-literate/admin/index.html">Literate</a>)</li>
+      <li><a href="haxe/admin/index.html">Haxe</a></li>
+      <li><a href="htmlembedded/admin/index.html">HTML embedded</a> (JSP, ASP.NET)</li>
+      <li><a href="htmlmixed/admin/index.html">HTML mixed-mode</a></li>
+      <li><a href="http/admin/index.html">HTTP</a></li>
+      <li><a href="idl/admin/index.html">IDL</a></li>
+      <li><a href="clike/admin/index.html">Java</a></li>
+      <li><a href="javascript/admin/index.html">JavaScript</a> (<a href="jsx/admin/index.html">JSX</a>)</li>
+      <li><a href="jinja2/admin/index.html">Jinja2</a></li>
+      <li><a href="julia/admin/index.html">Julia</a></li>
+      <li><a href="kotlin/admin/index.html">Kotlin</a></li>
+      <li><a href="css/less.html">LESS</a></li>
+      <li><a href="livescript/admin/index.html">LiveScript</a></li>
+      <li><a href="lua/admin/index.html">Lua</a></li>
+      <li><a href="markdown/admin/index.html">Markdown</a> (<a href="gfm/admin/index.html">GitHub-flavour</a>)</li>
+      <li><a href="mathematica/admin/index.html">Mathematica</a></li>
+      <li><a href="mbox/admin/index.html">mbox</a></li>
+      <li><a href="mirc/admin/index.html">mIRC</a></li>
+      <li><a href="modelica/admin/index.html">Modelica</a></li>
+      <li><a href="mscgen/admin/index.html">MscGen</a></li>
+      <li><a href="mumps/admin/index.html">MUMPS</a></li>
+      <li><a href="nginx/admin/index.html">Nginx</a></li>
+      <li><a href="nsis/admin/index.html">NSIS</a></li>
+      <li><a href="ntriples/admin/index.html">N-Triples/N-Quads</a></li>
+      <li><a href="clike/admin/index.html">Objective C</a></li>
+      <li><a href="mllike/admin/index.html">OCaml</a></li>
+      <li><a href="octave/admin/index.html">Octave</a> (MATLAB)</li>
+      <li><a href="oz/admin/index.html">Oz</a></li>
+      <li><a href="pascal/admin/index.html">Pascal</a></li>
+      <li><a href="pegjs/admin/index.html">PEG.js</a></li>
+      <li><a href="perl/admin/index.html">Perl</a></li>
+      <li><a href="asciiarmor/admin/index.html">PGP (ASCII armor)</a></li>
+      <li><a href="php/admin/index.html">PHP</a></li>
+      <li><a href="pig/admin/index.html">Pig Latin</a></li>
+      <li><a href="powershell/admin/index.html">PowerShell</a></li>
+      <li><a href="properties/admin/index.html">Properties files</a></li>
+      <li><a href="protobuf/admin/index.html">ProtoBuf</a></li>
+      <li><a href="pug/admin/index.html">Pug</a></li>
+      <li><a href="puppet/admin/index.html">Puppet</a></li>
+      <li><a href="python/admin/index.html">Python</a></li>
+      <li><a href="q/admin/index.html">Q</a></li>
+      <li><a href="r/admin/index.html">R</a></li>
+      <li><a href="rpm/admin/index.html">RPM</a></li>
+      <li><a href="rst/admin/index.html">reStructuredText</a></li>
+      <li><a href="ruby/admin/index.html">Ruby</a></li>
+      <li><a href="rust/admin/index.html">Rust</a></li>
+      <li><a href="sas/admin/index.html">SAS</a></li>
+      <li><a href="sass/admin/index.html">Sass</a></li>
+      <li><a href="spreadsheet/admin/index.html">Spreadsheet</a></li>
+      <li><a href="clike/scala.html">Scala</a></li>
+      <li><a href="scheme/admin/index.html">Scheme</a></li>
+      <li><a href="css/scss.html">SCSS</a></li>
+      <li><a href="shell/admin/index.html">Shell</a></li>
+      <li><a href="sieve/admin/index.html">Sieve</a></li>
+      <li><a href="slim/admin/index.html">Slim</a></li>
+      <li><a href="smalltalk/admin/index.html">Smalltalk</a></li>
+      <li><a href="smarty/admin/index.html">Smarty</a></li>
+      <li><a href="solr/admin/index.html">Solr</a></li>
+      <li><a href="soy/admin/index.html">Soy</a></li>
+      <li><a href="stylus/admin/index.html">Stylus</a></li>
+      <li><a href="sql/admin/index.html">SQL</a> (several dialects)</li>
+      <li><a href="sparql/admin/index.html">SPARQL</a></li>
+      <li><a href="clike/admin/index.html">Squirrel</a></li>
+      <li><a href="swift/admin/index.html">Swift</a></li>
+      <li><a href="stex/admin/index.html">sTeX, LaTeX</a></li>
+      <li><a href="tcl/admin/index.html">Tcl</a></li>
+      <li><a href="textile/admin/index.html">Textile</a></li>
+      <li><a href="tiddlywiki/admin/index.html">Tiddlywiki</a></li>
+      <li><a href="tiki/admin/index.html">Tiki wiki</a></li>
+      <li><a href="toml/admin/index.html">TOML</a></li>
+      <li><a href="tornado/admin/index.html">Tornado</a> (templating language)</li>
+      <li><a href="troff/admin/index.html">troff</a> (for manpages)</li>
+      <li><a href="ttcn/admin/index.html">TTCN</a></li>
+      <li><a href="ttcn-cfg/admin/index.html">TTCN Configuration</a></li>
+      <li><a href="turtle/admin/index.html">Turtle</a></li>
+      <li><a href="twig/admin/index.html">Twig</a></li>
+      <li><a href="vb/admin/index.html">VB.NET</a></li>
+      <li><a href="vbscript/admin/index.html">VBScript</a></li>
+      <li><a href="velocity/admin/index.html">Velocity</a></li>
+      <li><a href="verilog/admin/index.html">Verilog/SystemVerilog</a></li>
+      <li><a href="vhdl/admin/index.html">VHDL</a></li>
+      <li><a href="vue/admin/index.html">Vue.js app</a></li>
+      <li><a href="webidl/admin/index.html">Web IDL</a></li>
+      <li><a href="xml/admin/index.html">XML/HTML</a></li>
+      <li><a href="xquery/admin/index.html">XQuery</a></li>
+      <li><a href="yacas/admin/index.html">Yacas</a></li>
+      <li><a href="yaml/admin/index.html">YAML</a></li>
+      <li><a href="yaml-frontmatter/admin/index.html">YAML frontmatter</a></li>
+      <li><a href="z80/admin/index.html">Z80</a></li>
+    </ul>
+  </div>
+
+</article>
